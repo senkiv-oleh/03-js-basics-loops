@@ -5,7 +5,13 @@
  * @returns {number} Example: 5 -> 15 (1+2+3+4+5)
  */
 function sumWithWhile(n) {
-  // TODO: Implement function using while loop
+  sum = 0;
+  i = 1;
+  while(i <= n) {
+    sum += i;
+    i++;
+  }
+  return sum;
 }
 
 /**
@@ -15,7 +21,12 @@ function sumWithWhile(n) {
  * @returns {string} Example: 3 -> "3 2 1"
  */
 function countDownString(start) {
-  // TODO: Implement function using while(start)
+  let result = '';
+  while (start > 0) {
+    result += start + ' ';
+    start--;
+  }
+  return result.trim();
 }
 
 /**
@@ -26,7 +37,13 @@ function countDownString(start) {
  * @returns {string} Example: ("hi", 3) -> "hihihi", ("hi", 0) -> "hi"
  */
 function doWhileAtLeastOnce(str, times) {
-  // TODO: Implement function using do...while loop
+  let result = '';
+  let count = 0;
+  do {
+    result += str;
+    count++;
+  } while (count < times);
+  return result;
 }
 
 /**
@@ -36,7 +53,12 @@ function doWhileAtLeastOnce(str, times) {
  * @returns {number} Example: 5 -> 120 (1 * 2 * 3 * 4 * 5)
  */
 function factorialWithFor(n) {
-  // TODO: Implement function using for loop
+  if (n < 0) return undefined;
+  let result = 1;
+  for (let i = 2; i <= n; i++) {
+    result *= i;
+  } 
+  return result;
 }
 
 /**
@@ -45,7 +67,11 @@ function factorialWithFor(n) {
  * @returns {number} Example: 10 -> 30 (2+4+6+8+10)
  */
 function sumEvenUpTo(max) {
-  // TODO: Implement function using for loop with i += 2
+  let sum = 0;
+  for (let i = 2; i <= max; i+= 2) {
+    sum += i;
+  }
+  return sum;
 }
 
 /**
@@ -56,7 +82,11 @@ function sumEvenUpTo(max) {
  * @returns {number} Example: (7, 3) -> 9
  */
 function findFirstDivisible(start, divisor) {
-  // TODO: Implement function using for loop with omitted start section
+  for (; ; start++) {
+    if (start % divisor === 0) {
+      return start;
+    }
+  }
 }
 
 /**
@@ -67,7 +97,14 @@ function findFirstDivisible(start, divisor) {
  * @returns {string} Example: ("hello world", " ") -> "hello"
  */
 function collectCharsUntilStop(str, stopChar) {
-  // TODO: Implement function using break directive
+  let result = '';
+  for (let char of str) {
+    if (char === stopChar) {
+      break;
+    }
+    result += char;
+  }
+  return result;
 }
 
 /**
@@ -77,7 +114,14 @@ function collectCharsUntilStop(str, stopChar) {
  * @returns {string} Example: "123456" -> "135"
  */
 function collectOddDigits(strOfDigits) {
-  // TODO: Implement function using continue directive
+  let result = '';
+  for (let digit of strOfDigits) {
+    if (parseInt(digit) % 2 === 0) {
+      continue;
+    }
+    result += digit;
+  }
+  return result;
 }
 
 /**
@@ -90,7 +134,17 @@ function collectOddDigits(strOfDigits) {
  * @returns {string} Example: (2, 2, 0, 1) -> "(0,0) (0,1)"
  */
 function generateGridUntilTarget(rows, cols, stopR, stopC) {
-  // TODO: Implement function using nested loops and labeled break
+  let result = '';
+  outerLoop: for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      result += `(${r},${c}) `;
+      if (r === stopR && c === stopC) {
+        break outerLoop;
+      }
+      
+    }
+  }
+  return result.trim();
 }
 
 /**
@@ -102,7 +156,12 @@ function generateGridUntilTarget(rows, cols, stopR, stopC) {
  * @returns {number} Example: (2, 2, 9) -> 3 (2*2=4, 4*2=8, 8*2=16 -> 3 iterations)
  */
 function countIterationsToTarget(start, multiplier, target) {
-  // TODO: Implement function using while loop
+  let count = 0;
+  while (start < target) {
+    start *= multiplier;
+    count++;
+  }
+  return count;
 }
 
 module.exports = {
